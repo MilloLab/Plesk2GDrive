@@ -18,3 +18,7 @@ Backups are placed in a folder named “plesk2gdrive” on Google Drive.
 - Run the **-v** option to verify your configuration is correct before attempting to use the -r option.
 - Make sure you verify line **#38** to ensure it is compatible with your system configuration. 
 - Running the -v option will download any missing files and create a plesk2gdrive folder on Google Drive.
+
+
+Created by Brian Aldridge
+Modified by MilloLab
