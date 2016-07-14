@@ -11,8 +11,8 @@ Usage: plesk2gdrive-backup.sh [-c day : Set day of week] [-d ID : Delete specifi
  -l       : Lists backups for specified day.
  -h       : Displays this help page.
 ```
-Filenames will resemble: Saturday.tar, Monday.tar, etc.
-Backups are placed in a folder named “plesk2gdrive” on Google Drive.
+Filenames will resemble: Saturday-hostname.tar, Monday-hostname.tar, etc.
+Backups are placed in a folder named “plesk2gdrive-hostname” on Google Drive.
 
 - A backup file will not be created unless you use the **-r** option.
 - Run the **-v** option to verify your configuration is correct before attempting to use the -r option.
@@ -20,6 +20,6 @@ Backups are placed in a folder named “plesk2gdrive” on Google Drive.
 - Running the -v option will download any missing files and create a plesk2gdrive folder on Google Drive.
 
 
-Created by Brian Aldridge
+Created by Brian Aldridge 2014
 
-Modified by MilloLab
+Modified by MilloLab 2016
