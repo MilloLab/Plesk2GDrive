@@ -20,9 +20,11 @@
 # 0.1 - Initial version
 # 0.2 - Fixed comment type and adjusted path to be compatible with CentOS.
 # 0.3 - Updated to latest Google Drive API (2016)
+# 0.4 - Uses the native Plesk 17 (Onyx) pleskbackup binary and fixed incorrect Google Drive commands
 #
 # 10-1-2014 Created by Brian Aldridge - www.BiteOfTech.com
 # 7-2016 Modified by MilloLab - www.millolab.com
+# 15-6-2017 Modified by sdineley
 # ---------------------------------------------------------------------------
 clear
 export TERM=${TERM:-dumb}
@@ -140,7 +142,7 @@ while getopts "c:d:vrlh" opt; do
     #If plesk2gdrive folder does not exist on Google Drive it will be created.
     if [ -z "$FOLDERID" ]; then
         echo -e "The $plesk2gdrive folder does not exist in your Google Drive account. Creating now."
-        ~/drive-linux-$ARCH folder -t $plesk2gdrive
+        ~/drive-linux-$ARCH mkdir $plesk2gdrive
     else
         echo -e "${green}SUCCESS:${nocolor} The $plesk2gdrive folder exists on your Google Drive account."
     fi
@@ -173,9 +175,9 @@ while getopts "c:d:vrlh" opt; do
     (r) #Performs backup.
     echo -e "${yellow}Exporting backup to TAR file.${nocolor}"
     #Exports a full system backup.
-    /usr/bin/perl $PRODUCT_ROOT_D/admin/bin/plesk_agent_manager export-dump-as-file --dump-file-name=$currentbackup --output-file=$backuplocation/$currentday.tar --no-gzip
+    $PRODUCT_ROOT_D/bin/pleskbackup server --no-gzip --output-file=$backuplocation/$currentday.tar
     ##Commenting out the previous line and uncommenting the following line would change the backup to a single domain backup. Might be better for some people. Possibly integrate command line arguments in future to accommodate.
-    #/usr/bin/perl $PRODUCT_ROOT_D/admin/bin/plesk_agent_manager domains-name $singledomain --dump-file-name=$currentbackup --output-file=$backuplocation/$currentday.tar --no-gzip
+    #$PRODUCT_ROOT_D/bin/pleskbackup server domains-name $singlegomain --no-gzip --output-file=$backuplocation/$currentday.tar
     echo -e "Export done."
     echo -e "Removing existing backups on Google Drive with identical name."
     declare -a RESULT=($(~/drive-linux-$ARCH list -q "name='$currentday.tar'" --no-header))
