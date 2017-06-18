@@ -1,5 +1,7 @@
 # Plesk2GDrive
-####Plesk2GDrive: Simple to use Plesk Backup Script for Google Drive
+#### Plesk2GDrive: Simple to use Plesk Backup Script for Google Drive
+#### ONLY TO Plesk Onyx 17.5.3
+
 ```
 Usage: plesk2gdrive-backup.sh [-c day : Set day of week] [-d ID : Delete specific Backup] [-v : Verify settings] [-r : Performs Backup] [-l : Lists Backups] [-h : Detailed Help Page]
  -c  : Choose day of the week to manage.
@@ -11,6 +13,7 @@ Usage: plesk2gdrive-backup.sh [-c day : Set day of week] [-d ID : Delete specifi
  -l       : Lists backups for specified day.
  -h       : Displays this help page.
 ```
+
 Filenames will resemble: Saturday-hostname.tar, Monday-hostname.tar, etc.
 Backups are placed in a folder named “plesk2gdrive-hostname” on Google Drive.
 
